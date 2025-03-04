@@ -1,6 +1,5 @@
 <script setup>
 import { articleStore } from '@/store/index.js'
-// import { onMounted, ref } from 'vue'
 import banner2 from '@/assets/images/banner2.jpg'
 import {MdPreview, MdCatalog } from 'md-editor-v3';
 // preview.css相比style.css少了编辑器那部分样式

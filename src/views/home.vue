@@ -1,23 +1,5 @@
 <script setup>
-// import { onMounted, reactive, ref } from 'vue'
-// import { useRouter } from 'vue-router'
 import banner1 from '@/assets/images/banner1.jpg'
-// import FluentDividerShort20Filled from '~icons/fluent/divider-short-20-filled'
-// import MaterialSymbolsDateRange from '~icons/material-symbols/date-range'
-// import TablerClockHour2 from '~icons/tabler/clock-hour-2'
-// import SolarCardSendLinear from '~icons/solar/card-send-linear'
-// import AntDesignLikeOutlined from '~icons/ant-design/like-outlined'
-// import IcOutlineRemoveRedEye from '~icons/ic/outline-remove-red-eye'
-// import SimpleIconsPinboard from '~icons/simple-icons/pinboard'
-// import GravityUiServer from '~icons/gravity-ui/server'
-// import GrommetIconsGithub from '~icons/grommet-icons/github'
-// import FaBrandsWeixin from '~icons/fa-brands/weixin'
-// import FaWeibo from '~icons/fa/weibo'
-// import FaQq from '~icons/fa/qq'
-// import FluentEmojiFlatHandWithIndexFingerAndThumbCrossedMediumLight from '~icons/fluent-emoji-flat/hand-with-index-finger-and-thumb-crossed-medium-light'
-// import Fa6RegularBookmark from '~icons/fa6-regular/bookmark'
-// import MaterialSymbolsAndroidChat from '~icons/material-symbols/android-chat'
-// import MaterialSymbolsMarkChatUnreadOutline from '~icons/material-symbols/mark-chat-unread-outline'
 
 const router = useRouter()
 const goArticlePage = (id)=>{

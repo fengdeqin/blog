@@ -1,8 +1,4 @@
 <script setup>
-import { defineAsyncComponent, shallowRef } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import MdiAbjadHebrew from '~icons/mdi/abjad-hebrew'
-
 const router = useRouter()
 const route = useRoute();
 

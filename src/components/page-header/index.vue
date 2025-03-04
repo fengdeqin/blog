@@ -1,21 +1,8 @@
 <script setup>
-import { onMounted, ref, onBeforeUnmount } from 'vue'
-import { useRoute } from 'vue-router'
 import banner from '@/assets/images/banner2.jpg'
 import banner1 from '@/assets/images/banner1.jpg'
-import MdiChevronDown from '~icons/mdi/chevron-down'
 import { debounce } from '@/utils/tools'
 import { articleStore } from '@/store/index.js'
-import { storeToRefs } from 'pinia'
-// import FluentDividerShort20Filled from '~icons/fluent/divider-short-20-filled'
-// import MaterialSymbolsDateRange from '~icons/material-symbols/date-range'
-// import TablerClockHour2 from '~icons/tabler/clock-hour-2'
-// import SolarCardSendLinear from '~icons/solar/card-send-linear'
-// import AntDesignLikeOutlined from '~icons/ant-design/like-outlined'
-// import IcOutlineRemoveRedEye from '~icons/ic/outline-remove-red-eye'
-// import SimpleIconsPinboard from '~icons/simple-icons/pinboard'
-// import GravityUiServer from '~icons/gravity-ui/server'
-// import MaterialSymbolsMarkChatUnreadOutline from '~icons/material-symbols/mark-chat-unread-outline'
 
 const { getArticle } = storeToRefs(articleStore())
 
