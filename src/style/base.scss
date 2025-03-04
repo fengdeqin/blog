@@ -1,0 +1,61 @@
+@import url("./tailwind.css");
+@import url("./layout.scss");
+// 自定义element组件样式
+@import url("./element/custom.scss");
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+html{
+    width: 100%;
+    height: 100vh;
+    // overflow: hidden;
+    font-size: 16px;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    scroll-behavior: smooth;
+}
+
+/* 设置滚动条整体宽度 */
+::-webkit-scrollbar {
+    z-index: 9999;
+    width: 10px;
+    /* 适用于垂直滚动条 */
+    height: 10px;
+    /* 适用于水平滚动条 */
+}
+
+/* 设置滚动条轨道 */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* 设置轨道颜色 */
+    border-radius: 10px;
+    /* 圆角效果 */
+}
+
+/* 设置滚动条滑块（thumb） */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    /* 滑块颜色 */
+    border-radius: 10px;
+    /* 圆角效果 */
+    transition: background-color 0.3s ease;
+    /* 平滑过渡 */
+}
+
+/* 滑块悬停时的样式 */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(90, 90, 90, 0.5);
+    /* 增强的颜色 */
+}
+
+/* 水平滚动条轨道样式 */
+::-webkit-scrollbar-horizontal {
+    height: 8px;
+}
