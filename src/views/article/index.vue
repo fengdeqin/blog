@@ -24,6 +24,7 @@ const staticArticleDetail = {
     type: 'original',
     statement: 'This article is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.',
 }
+
 const id = 'preview-only';
 const articleElement = ref(`
 # 最近想做的 &#x274E;

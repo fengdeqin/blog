@@ -96,7 +96,7 @@ const personBlogInfo = ref([])
 const getPersonBlogInfo = () => {
     // 调接口
     personBlogInfo.value = {
-        title: "Feng's Personal Blog",
+        title: "Feng's Blog",
         desc: "Why can't I sleep for 25 hours every day",
         avatar: "https://wx3.sinaimg.cn/mw690/008wGrFlly1hvy65qa520j30t80t8wgi.jpg",
         articleNumber: 20,
