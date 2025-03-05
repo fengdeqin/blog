@@ -1,5 +1,4 @@
 .header-container{
-    z-index: 10;
     position: fixed;
     top: 0;
     left: 0;
@@ -7,12 +6,16 @@
     height: 60px;
     padding: 10px;
     border-bottom: 1px solid #0f172a1a;
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+        /* 确保模糊效果生效 */
 }
 
 .main-container {
     width: 100%;
     min-height: calc(100vh - 120px); //120?180
-    // margin-top: 60px;
+    background-color: #282828;
+    // padding-top: 60px;
 }
 
 .footer-container {

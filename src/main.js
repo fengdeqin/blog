@@ -18,11 +18,16 @@ import { createPinia } from 'pinia'
 // 持久化插件引入
 import { createPersistedState } from 'pinia-plugin-persistedstate';
 
+import vuetyped from 'vue3typed'
+
+
 
 const app = createApp(App)
 const pinia = createPinia()
 
 app.use(router) //注册路由插件
 app.use(pinia.use(createPersistedState())) //注册pinia函数,并持久化处理
+
+app.use(vuetyped);
 
 app.mount("#app")

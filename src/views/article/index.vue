@@ -120,6 +120,8 @@ const articleElement = ref(`
 
 `);
 const scrollElement = window.documentElement; //须确认滚动的是body还是html
+// scrollElement -还需要修改bug
+
 
 onMounted(() => {
     // console.log(document.scrollingElement); // 观察谁是滚动的元素
@@ -149,7 +151,7 @@ onMounted(() => {
             <el-affix :offset="60">
                 <el-card>
                     <div class="w-[100%] max-h-[100vh] p-8">
-                        <MdCatalog :offsetTop="80" :scrollElementOffsetTop="0" :editorId="id"
+                        <MdCatalog :offsetTop="80" :scrollElementOffsetTop="60" :editorId="id"
                             :scrollElement="scrollElement" />
                     </div>
                 </el-card>

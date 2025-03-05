@@ -1,5 +1,5 @@
 <script setup>
-import banner1 from '@/assets/images/banner1.jpg'
+import banner3 from '@/assets/images/banner3.gif'
 
 const router = useRouter()
 const goArticlePage = (id)=>{
@@ -121,13 +121,14 @@ onMounted(() => {
 <template>
     <el-row :gutter="20">
         <el-col :span="18">
-            <el-card v-for="item in articleList" :key="item.id" class="mb-[1rem] shadow-always" @click="goArticlePage(item.id)">
+            <el-card v-for="item in articleList" :key="item.id" class="mb-[1rem] shadow-always !bg-transparent"
+                @click="goArticlePage(item.id)">
                 <div class="w-[100%] h-[16rem] flex">
                     <div class="w-[45%] h-[100%] overflow-hidden">
-                        <el-image class="w-[100%] h-[100%] duration-300 hover:scale-125" :src="banner1"></el-image>
+                        <el-image class="w-[100%] h-[100%] duration-300 hover:scale-125" :src="banner3"></el-image>
                     </div>
-                    <div class="w-[55%] h-[100%] p-[1.2rem] flex flex-col justify-between">
-                        <div class="text-2xl">{{ item.title }}</div>
+                    <div class="w-[55%] h-[100%] p-[1.6rem] flex flex-col justify-between text-[#a5a5a5]">
+                        <div class="text-3xl text-[#cbcbcb]">{{ item.title }}</div>
                         <div class="text-sm flex flex-wrap items-center">
                             <SimpleIconsPinboard style="color: red" />
                             <div>Pin</div>
@@ -153,7 +154,7 @@ onMounted(() => {
                             <MaterialSymbolsMarkChatUnreadOutline />
                             <div>{{ item.readDuration }}</div>
                         </div>
-                        <div class="text-xl w-[100%] text-ellipsis whitespace-nowrap overflow-hidden pt-10">
+                        <div class="text-xl w-[100%] text-ellipsis whitespace-nowrap overflow-hidden">
                             {{ item.category }}
                         </div>
                     </div>
@@ -166,42 +167,42 @@ onMounted(() => {
         </el-col>
         <el-col :span="6">
             <!-- blog info -->
-            <div class="shadow"> <!-- info -->
-                <div class="flex items-center p-[5px]">
+            <div class="shadow text-[#a5a5a5]"> <!-- info -->
+                <div class="flex items-center p-[5px] text-[#cbcbcb]">
                     <!-- <el-image style="width: 100px; height: 100px; " :src="banner1" :fit="fit"></el-image> -->
-                    <el-avatar class="mr-[5px]" :size="48" :src="personBlogInfo.avatar" />
-                    <div>{{ personBlogInfo.title }}</div>
+                    <el-avatar class="mr-[10px]" :size="48" :src="personBlogInfo.avatar" />
+                    <div class="text-xl">{{ personBlogInfo.title }}</div>
                 </div>
-                <div class="p-[5px] text-sm">{{ personBlogInfo.desc }}</div>
-                <!--  -->
-                <div class="py-[30px] flex items-center justify-between">
+                <div class="my-3 text-sm">{{ personBlogInfo.desc }}</div>
+                <!-- info -->
+                <div class="pt-5 px-5 flex items-center justify-between text-center">
                     <div>
-                        <div>article</div>
+                        <div>Article</div>
                         <div>{{ personBlogInfo.articleNumber }}</div>
                     </div>
                     <div>
-                        <div>category</div>
+                        <div>Category</div>
                         <div>{{ personBlogInfo.categoryNumber }}</div>
                     </div>
                     <div>
-                        <div>tag</div>
+                        <div>Tags</div>
                         <div>{{ personBlogInfo.tagNumber }}</div>
                     </div>
                 </div>
                 <!-- github -->
-                <div class="flex justify-center items-center text-center bg-gray-200 hover:bg-gray-300">
+                <div class="mt-5 flex justify-center items-center text-center bg-gray-100 hover:bg-gray-300">
                     <GrommetIconsGithub />
                     <span class="pl-1.5">My Github</span>
                 </div>
                 <!-- icon link  -->
-                <div class="flex justify-between p-5">
+                <div class="flex justify-between p-10 text-white">
                     <FaBrandsWeixin />
                     <FaWeibo />
                     <FaQq />
                 </div>
             </div>
             <!-- public notice -->
-            <div class="shadow my-9">
+            <div class="shadow my-9 text-[#cbcbcb]">
                 <div class="flex items-center">
                     <FluentEmojiFlatHandWithIndexFingerAndThumbCrossedMediumLight />
                     <span class="pl-1">Announcement</span>
@@ -215,11 +216,11 @@ onMounted(() => {
             </div>
             <!-- tag -->
             <el-affix style="width: inherit;" :offset="60">
-                <div class="shadow">
+                <div class="shadow text-[#a5a5a5]">
                     <div class="flex items-center pl-2">
-                        <Fa6RegularBookmark class="text-sm" /><span class="pl-2">tags</span>
+                        <Fa6RegularBookmark class="text-sm" /><span class="pl-2 text-xl">tags</span>
                     </div>
-                    <div class="flex flex-wrap">
+                    <div class="flex flex-wrap text-white">
                         <div class="p-[0.2rem] bg-slate-300 m-2 rounded-md" v-for="item in tagList" :key="item">{{ item
                             }}
                         </div>
@@ -228,7 +229,7 @@ onMounted(() => {
             </el-affix>
 
             <!-- Site News -->
-            <div class="shadow mt-9">
+            <div class="shadow mt-9 text-[#a5a5a5]">
                 <div class="flex items-center">
                     <MaterialSymbolsAndroidChat /><span class="pl-2">Site News</span>
                 </div>

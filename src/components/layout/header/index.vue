@@ -45,9 +45,9 @@ const handleSelect = (path) => {
 </script>
 
 <template>
-    <div class="header-container flex justify-between backdrop-blur">
+    <div class="header-container flex justify-between backdrop-blur mx-2">
         <div class="flex">
-            <MdiAbjadHebrew class="text-4xl transition-all transition-duration-300 hover:rotate-180" />
+            <MdiAbjadHebrew class="text-white text-4xl transition-all transition-duration-300 hover:rotate-180" />
         </div>
         <div class="flex">
             <el-menu :default-active="route.path || '/home'" :ellipsis="false" mode="horizontal" @select="handleSelect">
@@ -69,7 +69,7 @@ const handleSelect = (path) => {
                 </el-menu-item>
             </el-menu>
             <!-- 头像 -->
-            <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
+            <el-avatar src="https://wx3.sinaimg.cn/mw690/008wGrFlly1hvy65qa520j30t80t8wgi.jpg" />
         </div>
     </div>
 </template>
