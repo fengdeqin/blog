@@ -2,9 +2,11 @@
 import { articleStore } from '@/store/index.js'
 import banner2 from '@/assets/images/banner2.jpg'
 import {MdPreview, MdCatalog } from 'md-editor-v3';
+import { configStore } from '@/store/index.js'
 // preview.css相比style.css少了编辑器那部分样式
 import 'md-editor-v3/lib/preview.css';
 
+const { isDark } = storeToRefs(configStore())
 
 const articleDetail = ref()
 const staticArticleDetail = {
@@ -120,6 +122,7 @@ const articleElement = ref(`
 
 `);
 const scrollElement = window.documentElement; //须确认滚动的是body还是html
+
 // scrollElement -还需要修改bug
 
 
@@ -133,10 +136,10 @@ onMounted(() => {
 
 <template>
     <el-row :gutter="20">
-        <el-col :span="18">
+        <el-col :xs="24" :sm="18">
             <el-card class="px-11 pb-16">
                 <div>
-                    <MdPreview :id="id" :modelValue="articleElement" />
+                    <MdPreview :theme="isDark ? 'dark' : 'light'" :id="id" :modelValue="articleElement" />
                 </div>
                 <!-- 版权信息 -->
                 <div class="p-5 text-sm mt-20 border">
@@ -147,7 +150,7 @@ onMounted(() => {
                 </div>
             </el-card>
         </el-col>
-        <el-col :span="6">
+        <el-col :xs="0" :sm="6">
             <el-affix :offset="60">
                 <el-card>
                     <div class="w-[100%] max-h-[100vh] p-8">

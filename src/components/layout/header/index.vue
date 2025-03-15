@@ -1,4 +1,8 @@
 <script setup>
+import { configStore } from '@/store/index.js'
+// 直接从 Pinia store 中获取 getIsDark
+const { isDark } = storeToRefs(configStore())
+
 const router = useRouter()
 const route = useRoute();
 
@@ -70,6 +74,10 @@ const handleSelect = (path) => {
             </el-menu>
             <!-- 头像 -->
             <el-avatar src="https://wx3.sinaimg.cn/mw690/008wGrFlly1hvy65qa520j30t80t8wgi.jpg" />
+            <!-- 主题切换 -->
+            <el-switch v-model="isDark" @change="configStore().SetThemeColor()" class="mx-[2rem]"
+                :active-icon="'line-md:moon-to-sunny-outline-loop-transition'" :inactive-icon="'ic:baseline-close'"
+                style="--el-switch-on-color: #e7f0eb; --el-switch-off-color: #444343" />
         </div>
     </div>
 </template>

@@ -1,6 +1,8 @@
 <script setup>
-import banner6 from '@/assets/images/banner6.gif'
-import banner5 from '@/assets/images/banner5.gif'
+import dark from '@/assets/images/banner6.gif'
+import light from '@/assets/images/banner2.jpg'
+import { configStore } from '@/store/index.js'
+const { isDark } = storeToRefs(configStore())
 
 import { debounce } from '@/utils/tools'
 import { articleStore } from '@/store/index.js'
@@ -11,9 +13,9 @@ const route = useRoute()
 const showScroll = ref(true)
 
 // 设置了overflow：hidden，所以document.body.scrollTo监听不到，直接监听window
+// -60是因为顶部设置了margin-top:60px，如果样式删除，这里也要删掉
 // 点击跳文章顶部
 const scrollToBottom = () => {
-    console.log(199, route.path)
     const element = document.getElementById('home')
     if (element) {
         window.scrollTo({
@@ -56,8 +58,8 @@ onBeforeUnmount(() => {
 <template>
     <div class="w-full">
         <div id="home" v-if="route.path == '/home'" class="top-banner h-[100vh] font-mono text-white">
-            <!-- image bg -->
-            <el-image class="w-full h-full" :src="banner6" fit="cover"></el-image>
+            <el-image class="w-full h-full" :src="isDark ? dark : light"
+                fit="cover"></el-image>
             <!-- 中间的文字 -->
             <div v-if="showScroll" class="max-w-[60%] home-text-center">
                 <div class="text-4xl font-bold">
@@ -77,7 +79,7 @@ onBeforeUnmount(() => {
             <!-- <div class="absolute top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,0.1)] z-10"></div> -->
         </div>
         <div v-else-if="route.path == '/article'" class="top-banner">
-            <el-image class="w-full h-60 overflow-hidden" :src="banner6" fit="cover"></el-image>
+            <el-image class="w-full h-60 overflow-hidden" :src="isDark ? dark : light" fit="cover"></el-image>
             <div class="my-5 text-3xl font-bold text-white home-text-center">
                 <span>{{ getArticle.title }}</span>
                 <div class="text-sm flex flex-wrap justify-center text-center mt-3">
@@ -105,7 +107,7 @@ onBeforeUnmount(() => {
             </div>
         </div>
         <div v-else class="top-banner">
-            <el-image class="w-full h-60 overflow-hidden" :src="banner6" fit="cover">2333</el-image>
+            <el-image class="w-full h-60 overflow-hidden" :src="isDark ? dark : light" fit="cover">2333</el-image>
         </div>
     </div>
 </template>
@@ -114,10 +116,12 @@ onBeforeUnmount(() => {
 .top-banner {
     @apply w-full relative;
 }
-svg{
+
+svg {
     margin-right: 2px;
 }
-.home-text-center{
+
+.home-text-center {
     @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center;
 }
 </style>

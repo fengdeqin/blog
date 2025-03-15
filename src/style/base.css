@@ -2,6 +2,7 @@
 @import url("./tailwind.css");
 @import url("./layout.scss");
 @import url("./element/custom.scss");
+@import url("./dark.scss");
 * {
   padding: 0;
   margin: 0;

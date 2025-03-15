@@ -29,3 +29,7 @@ ul.el-menu.el-menu--horizontal .el-menu--horizontal .el-menu-item:not(.is-disabl
 .el-card__body {
   padding: 0 !important;
 }
+
+.el-timeline-item__content {
+  color: #d3d4d4 !important;
+}

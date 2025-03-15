@@ -1,5 +1,29 @@
-import { defineStore } from 'pinia'
-// import banner2 from '@/assets/images/banner2.jpg'
+// 亮色/暗黑模式切换
+import { useDark, useToggle } from '@vueuse/core';
+// 使用 vueuse 的 useDark 和 useToggle 来管理主题状态
+const isDark = useDark();
+const toggleDark = useToggle(isDark);
+
+export const configStore = defineStore('config', {
+    state: () => {
+        return {
+            isDark: isDark.value,
+        }
+    },
+    getters: {
+        getIsDark: (state) => state.isDark,
+    },
+    actions: {
+        SetThemeColor() {
+            toggleDark()
+        }
+    },
+    // 使用插件的配置选项
+    persist: {
+        key: 'configStore',// 自定义存储的键名
+        storage: localStorage // 可以改为sessionStorage
+    }
+})
 
 export const userStore = defineStore('user', {
     state: () => {
@@ -7,13 +31,13 @@ export const userStore = defineStore('user', {
             userId: 0,
         }
     },
-    getters:{
+    getters: {
         getUserId() {
             return this.userId
         }
     },
-    actions:{
-        setUerId(){
+    actions: {
+        setUerId() {
             this.userId++
         }
     },

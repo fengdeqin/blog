@@ -2,8 +2,8 @@
 import banner3 from '@/assets/images/banner3.gif'
 
 const router = useRouter()
-const goArticlePage = (id)=>{
-    router.push({ path: '/article', query: { id }})
+const goArticlePage = (id) => {
+    router.push({ path: '/article', query: { id } })
 }
 
 const params = reactive({
@@ -120,15 +120,15 @@ onMounted(() => {
 
 <template>
     <el-row :gutter="20">
-        <el-col :span="18">
-            <el-card v-for="item in articleList" :key="item.id" class="mb-[1rem] shadow-always !bg-transparent"
+        <el-col :xs="24" :sm="18">
+            <el-card v-for="item in articleList" :key="item.id" class="mb-[1.2rem] shadow-always !bg-transparent"
                 @click="goArticlePage(item.id)">
-                <div class="w-[100%] h-[16rem] flex">
-                    <div class="w-[45%] h-[100%] overflow-hidden">
-                        <el-image class="w-[100%] h-[100%] duration-300 hover:scale-125" :src="banner3"></el-image>
+                <div class="w-[100%] h-[24rem] md:h-[18rem] flex md:flex-row flex-col">
+                    <div class="md:w-[45%] md:h-[100%] w-[100%] h-[50%] overflow-hidden">
+                        <globalImage animate src="/blog-images/KmImMBaIVCFr" @click="gotoArticle(item.id)" />
                     </div>
-                    <div class="w-[55%] h-[100%] p-[1.6rem] flex flex-col justify-between text-[#a5a5a5]">
-                        <div class="text-3xl text-[#cbcbcb]">{{ item.title }}</div>
+                    <div class="md:w-[55%] md:h-[100%] w-[100%] h-[50%] p-[1.2rem] flex flex-col justify-between">
+                        <div class="text-3xl">{{ item.title }}</div>
                         <div class="text-sm flex flex-wrap items-center">
                             <SimpleIconsPinboard style="color: red" />
                             <div>Pin</div>
@@ -160,22 +160,22 @@ onMounted(() => {
                     </div>
                 </div>
             </el-card>
-            <div class="flex justify-center items-center">
+            <div class="flex justify-center items-center mb-[1.2rem]">
                 <el-pagination v-model:current-page="params.page" :page-size="params.pageSize"
                     layout="prev, pager, next" :total="staticArticleList.length" @change="getArticleList" />
             </div>
         </el-col>
-        <el-col :span="6">
+        <el-col :xs="24" :sm="6">
             <!-- blog info -->
-            <div class="shadow text-[#a5a5a5]"> <!-- info -->
-                <div class="flex items-center p-[5px] text-[#cbcbcb]">
+            <div class="shadow"> <!-- info -->
+                <div class="flex items-center p-[1rem]">
                     <!-- <el-image style="width: 100px; height: 100px; " :src="banner1" :fit="fit"></el-image> -->
                     <el-avatar class="mr-[10px]" :size="48" :src="personBlogInfo.avatar" />
                     <div class="text-xl">{{ personBlogInfo.title }}</div>
                 </div>
-                <div class="my-3 text-sm">{{ personBlogInfo.desc }}</div>
+                <div class="my-[1rem] text-sm">{{ personBlogInfo.desc }}</div>
                 <!-- info -->
-                <div class="pt-5 px-5 flex items-center justify-between text-center">
+                <div class="flex items-center justify-between text-center">
                     <div>
                         <div>Article</div>
                         <div>{{ personBlogInfo.articleNumber }}</div>
@@ -190,19 +190,19 @@ onMounted(() => {
                     </div>
                 </div>
                 <!-- github -->
-                <div class="mt-5 flex justify-center items-center text-center bg-gray-100 hover:bg-gray-300">
+                <div class="mt-[2rem] flex justify-center items-center text-center bg-gray-100 hover:bg-gray-300">
                     <GrommetIconsGithub />
                     <span class="pl-1.5">My Github</span>
                 </div>
                 <!-- icon link  -->
-                <div class="flex justify-between p-10 text-white">
+                <div class="flex justify-between p-[2rem] text-white">
                     <FaBrandsWeixin />
                     <FaWeibo />
                     <FaQq />
                 </div>
             </div>
             <!-- public notice -->
-            <div class="shadow my-9 text-[#cbcbcb]">
+            <div class="shadow my-9">
                 <div class="flex items-center">
                     <FluentEmojiFlatHandWithIndexFingerAndThumbCrossedMediumLight />
                     <span class="pl-1">Announcement</span>
@@ -216,7 +216,7 @@ onMounted(() => {
             </div>
             <!-- tag -->
             <el-affix style="width: inherit;" :offset="60">
-                <div class="shadow text-[#a5a5a5]">
+                <div class="shadow">
                     <div class="flex items-center pl-2">
                         <Fa6RegularBookmark class="text-sm" /><span class="pl-2 text-xl">tags</span>
                     </div>
@@ -229,7 +229,7 @@ onMounted(() => {
             </el-affix>
 
             <!-- Site News -->
-            <div class="shadow mt-9 text-[#a5a5a5]">
+            <div class="shadow mt-9">
                 <div class="flex items-center">
                     <MaterialSymbolsAndroidChat /><span class="pl-2">Site News</span>
                 </div>
@@ -241,7 +241,7 @@ onMounted(() => {
             </div>
         </el-col>
     </el-row>
-    <div class="h-[200vh]">home</div>
+    <!-- <div class="h-[200vh]">home</div> -->
 </template>
 
 <style lang="postcss" scoped>
