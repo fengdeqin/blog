@@ -1,11 +1,11 @@
 // 菜单
 ul.el-menu.el-menu--horizontal {
-    top: -10px;
     background-color: transparent;
     border-bottom: none;
+
     // more样式
-    .el-sub-menu__title{
-        color: rgb(234, 240, 240)!important;
+    .el-sub-menu__title {
+        color: rgb(234, 240, 240) !important;
     }
 
     .el-menu-item {
@@ -29,11 +29,12 @@ ul.el-menu.el-menu--horizontal {
 
 
 // 卡片
-.el-card__body{
+.el-card__body {
     padding: 0 !important;
+    cursor: pointer;
 }
 
 // 事件条
-.el-timeline-item__content{
+.el-timeline-item__content {
     color: rgb(211, 212, 212) !important;
 }

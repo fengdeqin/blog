@@ -1,10 +1,9 @@
-<script setup>
-import { articleStore } from '@/store/index.js'
+<script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import { articleStore, configStore } from '@/store/index.js'
 import banner2 from '@/assets/images/banner2.jpg'
-import {MdPreview, MdCatalog } from 'md-editor-v3';
-import { configStore } from '@/store/index.js'
-// preview.css相比style.css少了编辑器那部分样式
-import 'md-editor-v3/lib/preview.css';
+import ArticlePreview from './ArticlePreview.vue'
+import ArticleSidebar from './ArticleSidebar.vue'
 
 const { isDark } = storeToRefs(configStore())
 
@@ -27,7 +26,7 @@ const staticArticleDetail = {
     statement: 'This article is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.',
 }
 
-const id = 'preview-only';
+const id = 'preview-only'
 const articleElement = ref(`
 # 最近想做的 &#x274E;
 
@@ -96,13 +95,13 @@ const articleElement = ref(`
 ## 10 月 1 日 &#x2705;
 
 增加了首次加载的动画，根据开发规范规范了代码
-可能是 vue3 的版本迭代了，之前的组件自动导入在新版本不支持，也有可能是我下了自动导入插件，我忘记了，就把一些公共组件重新导入了一下(尽量没有使用一些听起来不太规范的方式写代码，这样大家参考我的代码不会遇到太多问题)，可以直接使用我的组件在自己的项目里，只要是技术栈一致，版本没有差一个大版本就行。如果有问题的话，建议去看一看最新的文档的写法，我的博客都快开发一年了，一些框架肯定会有大大小小的更新的。
+可能是 vue3 的版本迭代了，之前的组件自动导入在新版本不支持，也有可能是我下了自动导入插件，我忘了，就把一些公共组件重新导入了一下(尽量没有使用一些听起来不太规范的方式写代码，这样大家参考我的代码不会遇到太多问题)，可以直接使用我的组件在自己的项目里，只要是技术栈一致，版本没有差一个大版本就行。如果有问题的话，建议去看一看最新的文档的写法，我的博客都快开发一年了，一些框架肯定会有大大小小的更新的。
 
 ## 重大 bug 修改记录
 
 ### 7 月
 
-有童鞋发现了我的用户信息是通过本地的用户 id 去取的，于是便可以通过修改 id 去篡改用户，还好这位善良的童鞋发现了这个 bug，所以我后面对本地用户加了一次密，其实可以通过 token 拿到用户信息的，但是目前这个博客对这方面的需求不是很大，所以咱们就暂时先这样吧。使用 token 去取用户信息其实我有写，但是我去改的话可能还会搞个 token 无感刷新，还没想通这个无感刷新对博客项目的实际帮助，所以就暂时不写。
+有童鞋发现了我的用户信息是通过本地的用户 id 去取的，于是便可以通过修改 id 去篡改用户，还好这位善良的童鞋发现了这个 bug，所以我后面对本地用户加了一次密，其实可以通过 token 拿到用户信息的，但是目前这个博客对这方面的需求不是很大，所以咱们就暂时先这样。使用 token 去取用户信息其实我有写，但是我去改的话可能还会搞个 token 无感刷新，还没想通这个无感刷新对博客项目的实际帮助，所以就暂时不写。
 
 ### 9 月 6 日
 
@@ -118,49 +117,25 @@ const articleElement = ref(`
 
 今天做了使用 minio 来进行图片的上传 之前使用的七牛云或者是上传到服务器的指定目录 效果都不是很好 因为服务器文件访问速度有限 就搁置了 后来了解到了 minio 于是就装了一个 minio 上传到 minio 里 minio 也是装在服务器里 只是访问速度很快 做了一下午 效果还不错 以后都不用压缩图片了 之前写压缩是因为七牛云免费的版本传不了太大的 现在自己的服务器 可以适当压缩率低一些
 优化了后台所有页面的布局 按照填满整个屏幕的规则去填充的 会比之前的好看一些 舒服一些 也不会出现很多内容太多了滚动到很下面去了 直接一个屏幕就能看完
+`)
 
-
-`);
-const scrollElement = window.documentElement; //须确认滚动的是body还是html
-
-// scrollElement -还需要修改bug
-
+const scrollElement = ref<HTMLElement>()
 
 onMounted(() => {
-    // console.log(document.scrollingElement); // 观察谁是滚动的元素
+    scrollElement.value = document.documentElement
     articleDetail.value = staticArticleDetail
     articleStore().setArticle(articleDetail.value)
 })
-
 </script>
 
 <template>
     <el-row :gutter="20">
         <el-col :xs="24" :sm="18">
-            <el-card class="px-11 pb-16">
-                <div>
-                    <MdPreview :theme="isDark ? 'dark' : 'light'" :id="id" :modelValue="articleElement" />
-                </div>
-                <!-- 版权信息 -->
-                <div class="p-5 text-sm mt-20 border">
-                    <div>Article Author: {{ staticArticleDetail.author || '-' }}</div>
-                    <div>Type: {{ staticArticleDetail.type || '-' }}</div>
-                    <div>Link: {{ staticArticleDetail.link || '-' }}</div>
-                    <div>Statement: {{ staticArticleDetail.statement || '-' }}</div>
-                </div>
-            </el-card>
+            <ArticlePreview :article-element="articleElement" :static-article-detail="staticArticleDetail"
+                :is-dark="isDark" :id="id" />
         </el-col>
         <el-col :xs="0" :sm="6">
-            <el-affix :offset="60">
-                <el-card>
-                    <div class="w-[100%] max-h-[100vh] p-8">
-                        <MdCatalog :offsetTop="80" :scrollElementOffsetTop="60" :editorId="id"
-                            :scrollElement="scrollElement" />
-                    </div>
-                </el-card>
-            </el-affix>
+            <ArticleSidebar v-if="scrollElement" :id="id" :scroll-element="scrollElement" />
         </el-col>
     </el-row>
 </template>
-
-<style lang="scss"></style>

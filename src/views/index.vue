@@ -11,6 +11,7 @@ const params = reactive({
     pageSize: 5
 })
 const articleList = ref([])
+// 假数据，实际开发中需要请求接口获取
 const staticArticleList = [
     {
         id: 1,
@@ -96,7 +97,7 @@ const personBlogInfo = ref([])
 const getPersonBlogInfo = () => {
     // 调接口
     personBlogInfo.value = {
-        title: "Feng's Blog",
+        title: "Delia's Blog",
         desc: "Why can't I sleep for 25 hours every day",
         avatar: "https://wx3.sinaimg.cn/mw690/008wGrFlly1hvy65qa520j30t80t8wgi.jpg",
         articleNumber: 20,
@@ -192,7 +193,7 @@ onMounted(() => {
                 <!-- github -->
                 <div class="mt-[2rem] flex justify-center items-center text-center bg-gray-100 hover:bg-gray-300">
                     <GrommetIconsGithub />
-                    <span class="pl-1.5">My Github</span>
+                    <span class="pl-1.5 cursor-pointer">My Github</span>
                 </div>
                 <!-- icon link  -->
                 <div class="flex justify-between p-[2rem] text-white">
@@ -221,7 +222,8 @@ onMounted(() => {
                         <Fa6RegularBookmark class="text-sm" /><span class="pl-2 text-xl">tags</span>
                     </div>
                     <div class="flex flex-wrap text-white">
-                        <div class="p-[0.2rem] bg-slate-300 m-2 rounded-md" v-for="item in tagList" :key="item">{{ item
+                        <div class="p-[0.2rem] bg-slate-300 m-2 rounded-md cursor-pointer" v-for="item in tagList"
+                            :key="item">{{ item
                             }}
                         </div>
                     </div>
@@ -244,7 +246,7 @@ onMounted(() => {
     <!-- <div class="h-[200vh]">home</div> -->
 </template>
 
-<style lang="postcss" scoped>
+<style lang="scss" scoped>
 .site-new {
     @apply my-2;
 }

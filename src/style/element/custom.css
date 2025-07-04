@@ -1,5 +1,4 @@
 ul.el-menu.el-menu--horizontal {
-  top: -10px;
   background-color: transparent;
   border-bottom: none;
 }
@@ -28,6 +27,7 @@ ul.el-menu.el-menu--horizontal .el-menu--horizontal .el-menu-item:not(.is-disabl
 
 .el-card__body {
   padding: 0 !important;
+  cursor: pointer;
 }
 
 .el-timeline-item__content {

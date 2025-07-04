@@ -1,14 +1,15 @@
-.header-container{
+.header-container {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     height: 60px;
     padding: 10px;
-    border-bottom: 1px solid #0f172a1a;
-    backdrop-filter: blur(8px);
+    // border-bottom: 1px solid #0f172a1a;
+    // backdrop-filter: blur(8px);
+    // -webkit-backdrop-filter: blur(10px); // Safari 兼容
+    // background-color: rgba(0, 0, 0, 0.5); // 半透明背景，提升模糊效果
     z-index: 1000;
-        /* 确保模糊效果生效 */
 }
 
 .main-container {
